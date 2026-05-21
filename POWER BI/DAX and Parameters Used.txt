@@ -1,0 +1,64 @@
+Group of Measures Used to Illustrate (KPIs) : 
+
+Total Employees = COUNTROWS(HR_Employees)
+
+Attrition Count = CALCULATE(COUNTROWS(HR_Employees), HR_Employees[Attrition] = "Yes")
+
+Active Employees = CALCULATE(COUNTROWS(HR_Employees), HR_Employees[Attrition] = "No")
+
+Attrition Rate = DIVIDE([Attrition Count], [Total Employees], 0)
+
+Avg Age = AVERAGE(HR_Employees[Age])
+
+Avg Monthly Income = AVERAGE(HR_JobDetails[MonthlyIncome])
+
+Avg Job Satisfaction = AVERAGE(HR_Satisfaction[JobSatisfaction])
+
+Avg Years At Company = AVERAGE(HR_WorkHistory[YearsAtCompany])
+
+Avg Num Companies Worked = AVERAGE(HR_WorkHistory[NumCompaniesWorked])
+
+Employees At Risk After Raise = ROUND([Total Employees] * [Projected Attrition Reduction], 0)
+
+
+------------------------
+
+Group of Measures Used to Answer Prediction Questions : 
+
+Attrition Risk Score = 
+VAR OverTimeScore     = IF(MAX(HR_JobDetails[OverTime]) = "Yes", 30, 0)
+VAR SatisfactionScore = IF(MAX(HR_Satisfaction[JobSatisfaction]) <= 2, 25, 0)
+VAR BalanceScore      = IF(MAX(HR_Satisfaction[WorkLifeBalance]) <= 2, 20, 0)
+VAR DistanceScore     = IF(MAX(HR_Employees[DistanceFromHome]) >= 20, 15, 0)
+VAR StockScore        = IF(MAX(HR_JobDetails[StockOptionLevel]) = 0, 10, 0)
+RETURN
+OverTimeScore + SatisfactionScore + BalanceScore + DistanceScore + StockScore
+
+Risk Category = 
+IF([Attrition Risk Score] >= 51, "🔴 High Risk",
+IF([Attrition Risk Score] >= 21, "🟡 Medium Risk", "🟢 Low Risk"))
+
+------------------------
+
+Measures Used in the Parameters:
+
+Projected Income =
+[Avg Monthly Income] * (1 + 'Salary Increase %'[Salary Increase % Value] / 100)
+
+Projected Attrition Reduction =
+[Attrition Rate] * (1 - 'Salary Increase %'[Salary Increase % Value] / 200)
+
+Projected Income After Experience =
+[Avg Monthly Income] *
+(1 + ('Extra Years'[Extra Years Value] * 0.05))
+
+-----------------------
+
+Parameters : 
+
+Extra Years = GENERATESERIES(0, 10, 1)
+Extra Years Value = SELECTEDVALUE('Extra Years'[Extra Years], 5)
+
+
+Salary Increase % = GENERATESERIES(0, 50, 1)
+Salary Increase % Value = SELECTEDVALUE('Salary Increase %'[Salary Increase %])

@@ -1,0 +1,47 @@
+Questions Answered in the Dashboard :
+
+Page 1  (Overview) : 
+
+- Total Employees
+- Avg Age
+- Avg Monthly Income
+- Active Employees
+- Avg Num Companies Worked
+- Distribution of Attrition
+- Gender Distribution
+- Total Employees in Each Department
+- Average Years of Experience for Each Department in the Company
+- Average Job Satisfaction in Each Department
+- The Relationship Between Salary Increase and Performance Rating
+- Employees Who Have Not Received a Promotion for More Than 5 Years
+
+
+Page 2  (Attrition & Salary Analysis) : 
+
+- Attrition Rate
+- Avg Job Satisfaction
+- Does Distance from Home Affect an Employee’s Decision to Resign?
+- Illustrating the Impact of Stock Options on Attrition
+- Average Monthly Income for Each Job Role
+- The Relationship Between Marital Status and Attrition, and Whether It Affects the Resignation Decision
+- The Relationship Between Salary Increase Percentage and Attrition
+- The Relationship Between Age and Monthly Income
+- The Relationship Between Salary and Average Job Satisfaction
+
+
+Page 3 (Predictive Analysis) : 
+
+- Predicting the Impact of Increasing Salary Percentage on Expected Average Income, Reduction in Attrition Rate, and the Number of Employees at Risk of Resignation After the Increase
+
+- Predicting the Impact of Increasing Years of Experience on Expected Income
+
+- Identifying Employees Most Likely to Resign and Categorizing Them Based on Risk Level
+
+- Predicting Salary Growth with Increasing Years of Experience and Showing the Expected Salary for 5 to 10 Years of Experience
+
+- Predicting Job Satisfaction Level with Increasing Years of Experience and the Expected Satisfaction Score for 5 to 10 Years of Experience
+
+- The Relationship Between Overtime and Attrition, and Identifying Acceptable vs. Abnormal Attrition Levels
+
+
+
